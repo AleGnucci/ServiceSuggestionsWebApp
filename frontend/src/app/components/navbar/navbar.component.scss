@@ -1,0 +1,82 @@
+.dropdown-toggle, .addServiceButton{
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: transparent;
+  margin: 18px 15px 15px 15px !important;
+  padding: 10px 10px 10px 15px;
+  text-align: center;
+}
+
+.dropdown-menu{
+  background-color: #379683 !important;
+  max-width: 200px !important;
+  line-height: normal !important;
+}
+
+#account-dropdown-menu:hover, #item-dropdown-menu:hover, #category-dropdown-menu:hover{
+  background-color: #379683 !important;
+}
+
+#item-dropdown-menu, #account-dropdown-menu{
+  overflow: hidden !important;
+  height: fit-content;
+}
+
+section, .nav-link{
+  display: inline-block;
+}
+
+#navBarDropdownAccount{
+  width: 138px;
+}
+
+#navBarDropdownFindItem{
+  width: 115px;
+}
+
+.addServiceButton, .addServiceButton:active{
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  margin: 15px !important;
+  text-transform: none !important;
+  text-align: center;
+  background-color: transparent !important;
+}
+
+.dropdown-toggle:hover,.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  transition: background-color 100ms linear !important;
+}
+
+.navbar-translate{
+  width: 100%;
+  display:flex;
+}
+
+.back-button, .home-button{
+  text-decoration: none;
+  margin: 2%;
+  cursor: pointer;
+}
+
+.navbar-toggler{
+  margin-left: auto;
+}
+
+nav {
+  background-color: #379683 !important;
+  max-height: 58px;
+}
+
+.fa{
+  color: white !important;
+}
+
+.nav-link{
+  min-width: 100px;
+  padding: auto;
+  line-height: normal;
+  background-color: transparent;
+  font-size: smaller !important;
+}

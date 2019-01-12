@@ -1,0 +1,53 @@
+users:
+{
+	"name" : .., //unique, è una stringa_id
+	"roles" : [.., .., ...], //jsonArray
+	"permissions" : [.., .., ...],
+	"salt" : ..,
+	"password" : .. //hash SHA-512 della password con concatenato l'hash
+}
+
+
+user.ids:
+{
+	"userName" : .., //parte di chiave primaria, importata da users
+	"id" : .. //parte di chiave primaria, è un Long
+}
+
+
+services:
+{
+	"id" : .., chiave primaria
+	"category" : ..,
+	"name" : .., 
+	"description": ..,
+	"placeId" : .. //chiave importata da Place
+}
+
+
+service.removal.votes   //se non c'è un record si suppone voti 0-0
+{
+	"serviceId" : .., //parte di chiave primaria
+	"userId" : .., //parte di chiave primaria
+	"isVoteForRemoval" : .., //booleano
+}
+
+
+service.reviews:
+{
+	"serviceId" : .., //parte di chiave primaria, importata da Service
+	"userId" : .., //parte di chiave primaria, importata da User
+	"stars" : .., //da 0 a 5
+	"comment" : .. , //è un testo opzionale
+	"date" : .. //fallo come timestamp long
+}
+
+
+place.reviews: 
+{
+	"placeId" : .., //parte di chiave primaria, importata da Place
+	"userId" : .. //parte di chiave primaria, importata da User
+	"stars" : .., //da 0 a 5
+	"comment" : .., //è un testo opzionale
+	"date" : .. //fallo come timestamp long
+}

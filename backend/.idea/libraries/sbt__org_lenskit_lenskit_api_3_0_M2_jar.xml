@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: org.lenskit:lenskit-api:3.0-M2:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.lenskit/lenskit-api/jars/lenskit-api-3.0-M2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.lenskit/lenskit-api/srcs/lenskit-api-3.0-M2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

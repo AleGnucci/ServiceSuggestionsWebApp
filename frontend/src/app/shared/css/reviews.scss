@@ -1,0 +1,28 @@
+@import "card-list";
+@import "map";
+
+#reviews-div{
+  margin-top: 5%;
+}
+
+#iframe-div{
+  display: block;
+  margin: auto;
+  width:      80%;
+  height:   80%;
+  padding-top:   80%;
+}
+
+.big-stars{
+  transform: scale(1.5);
+  display: block;
+}
+
+app-stars{
+  width: 70%;
+  margin: auto;
+}
+
+.reviews-page-link{
+  color: white !important;
+}

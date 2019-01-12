@@ -1,0 +1,27 @@
+<div class="page-main-header">
+  <div class="container content-center">
+    <div *ngIf="!searchCompleted" class="centering-div">
+      <p>Getting your reviews...</p>
+    </div>
+    <div  class="col-md-8 content-center centering-div" *ngIf="searchCompleted">
+      <h1>Your {{itemType}} reviews:</h1>
+      <div *ngIf="reviews.length==0">
+        <p>You have reviewed zero {{itemType}}s.</p>
+      </div>
+      <ol class="list-group list-group-flush centering-div">
+        <li *ngFor="let review of reviews">
+          <div class="card list-group-item">
+            <div class="card-body centering-div">
+              <app-stars [stars]="review.stars"></app-stars>
+              <p class="card-text">{{review.comment}}</p>
+              <p class="card-text date-p">{{review.date.toLocaleDateString()}}</p>
+              <a href="#" class="card-link cool-link text-capitalize" [href]="'/reviews/' + itemType + '/'+review.itemId">
+                {{itemType}}
+              </a>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>

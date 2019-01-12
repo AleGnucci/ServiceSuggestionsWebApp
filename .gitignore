@@ -1,2 +1,49 @@
 *.class
 *.log
+
+# User-specific stuff
+backend/.idea/**/workspace.xml
+backend/.idea/**/tasks.xml
+backend/.idea/**/usage.statistics.xml
+backend/.idea/**/dictionaries
+backend/.idea/**/shelf
+frontend/.idea/**/workspace.xml
+frontend/.idea/**/tasks.xml
+frontend/.idea/**/usage.statistics.xml
+frontend/.idea/**/dictionaries
+frontend/.idea/**/shelf
+
+# Generated files
+backend/.idea/**/contentModel.xml
+frontend/.idea/**/contentModel.xml
+
+# Sensitive or high-churn files
+backend/.idea/**/dataSources/
+backend/.idea/**/dataSources.ids
+backend/.idea/**/dataSources.local.xml
+backend/.idea/**/sqlDataSources.xml
+backend/.idea/**/dynamic.xml
+backend/.idea/**/uiDesigner.xml
+backend/.idea/**/dbnavigator.xml
+frontend/.idea/**/dataSources/
+frontend/.idea/**/dataSources.ids
+frontend/.idea/**/dataSources.local.xml
+frontend/.idea/**/sqlDataSources.xml
+frontend/.idea/**/dynamic.xml
+frontend/.idea/**/uiDesigner.xml
+frontend/.idea/**/dbnavigator.xml
+
+# File-based project format
+*.iws
+
+# IntelliJ
+backend/out/
+frontend/out/
+backend/target/
+frontend/target/
+
+# Vertx
+backend/.vertx
+
+# Angular
+frontend/node_modules

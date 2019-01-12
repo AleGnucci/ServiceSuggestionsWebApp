@@ -1,0 +1,142 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap.scss";
+@import '~css-star-rating/scss/star-rating';
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 10000; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  right: 50%;
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+body{
+  padding-top: 53px;
+}
+
+.content-center{
+  margin: auto;
+}
+
+.page-header {
+  margin: 0;
+  min-height: calc(100vh - 118px) !important;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  background: linear-gradient(0deg, rgba(44, 44, 44, 0.2), rgba(20, 90, 70, 0.4)) !important;
+}
+
+.page-header:after, .page-header:before{
+  position:fixed !important;
+  height: 100vh !important;
+}
+
+#index-main-title{
+  font-size: calc(30px + 1vw);
+}
+
+.page-main-header{
+  background: linear-gradient(#404040, rgba(111, 111, 111, 1)) scroll;
+  height: 100vh;
+  max-height: 1050px;
+  padding: 0;
+  color: #FFFFFF;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 0;
+  min-height: calc(100vh - 123px) !important;
+
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-size: auto;
+  box-sizing: border-box;
+  font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  overflow-y: auto;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.centering-div{
+  text-align:center;
+  margin: 5% auto;
+}
+
+.sidebar-collapse .navbar-collapse:before{
+  background: linear-gradient(#209070 0%, #000 80%) !important;
+}
+
+.hide-element {
+  border: 0;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+@-moz-document url-prefix() {
+  select {
+    appearance: none;
+    background: url("assets/img/angle-down.png") no-repeat 98.5% !important;
+  }
+
+  .page-main-header{
+    min-height: calc(100vh - 124px) !important;
+  }
+
+  footer{
+    height: 65px;
+  }
+}

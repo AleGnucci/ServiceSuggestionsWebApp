@@ -1,0 +1,49 @@
+- GET / //pagina di index
+
+- GET /place/{placeId}/reviews
+
+- GET /place/{placeId}/average_stars
+
+- POST /private/place/{placeId}/review
+
+- DELETE /private/place/{placeId}/review //questo funziona solo se il client è lo stesso che ha creato la recensione
+
+- GET /service/{serviceId}/reviews
+
+- GET /service/{serviceId}/average_stars
+
+- POST /private/service/{serviceId}/review
+
+- DELETE /private/service/{serviceId}/review //questo funziona solo se il client è lo stesso che ha creato la recensione
+
+- GET /private/recommendations/service_category/{service_category} //usa LensKit per ottenere le raccomandazioni, in base alla collezione service.reviews
+
+- GET /service/{serviceId}
+
+- GET /services/with_similar_name/{name}
+
+- POST /private/service
+
+- GET /user/self/service_reviews
+
+- GET /user/self/place_reviews
+
+- POST /user/{userName}/ //register
+
+- DELETE /private/user/ /unregister
+
+- POST /user/{userName}/session //login
+
+- DELETE /user/session //logout
+
+- POST /private/service/{serviceId}/voteForWrongData
+
+- POST /private/service/{serviceId}/voteForCorrectData
+
+- HEAD /private/service/{serviceId}/vote
+
+
+esempio di dati per il login: 
+{
+	"password" : "123"
+}

@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-lg bg-primary fixed-top" color-on-scroll="500">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="fa fa-home fa-2x home-button" title="Homepage"
+               *ngIf="this.router.url != '/'" tabindex="0" routerLink="/"></a>
+            <a class="fa fa-chevron-circle-left back-button fa-2x button" title="Back"
+               *ngIf="this.router.url != '/'" tabindex="0"
+               (click)="this.location.back()"></a>
+            <button class="navbar-toggler" id="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarToggler" aria-controls="navbar-content"
+                    aria-label="Toggle navigation bar" (click)="sidebarOpen()">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-content" data-color="orange">
+            <ul class="navbar-nav ml-auto">
+                <li class="dropdown nav-item" tabindex="0"
+                    (keyup)="$event.key == 'Enter' ? openDropdownMenu(0) : null">
+                    <button role="heading" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1"
+                            data-toggle="dropdown">
+                        Account
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="nav-link dropdown-menu dropdown-menu-right" id="account-dropdown-menu" role="menu"
+                        aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><a class="nav-link" routerLink="/reviews/services_by_current_user"
+                                                   *ngIf="isLoggedIn()" routerLinkActive="active">
+                            <p>My Service Reviews</p>
+                        </a></li>
+                        <li role="presentation"><a class="nav-link" routerLink="/reviews/places_by_current_user"
+                                                   *ngIf="isLoggedIn()" routerLinkActive="active">
+                            <p>My Place Reviews</p>
+                        </a></li>
+                        <li role="presentation"><a class="nav-link" routerLink="/login"
+                                                   *ngIf="!isLoggedIn()" routerLinkActive="active">
+                            <p>Login</p>
+                        </a></li>
+                        <li role="presentation"><a class="nav-link" (click)="logout()" routerLink="/logout"
+                                                   *ngIf="isLoggedIn()" routerLinkActive="active">
+                            <p>Logout</p>
+                        </a></li>
+                        <li role="presentation"><a class="nav-link" routerLink="/register"
+                                                   *ngIf="!isLoggedIn()" routerLinkActive="active">
+                            <p>Register</p>
+                        </a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a class="nav-link" routerLink="/unregister"
+                                                   *ngIf="isLoggedIn()" routerLinkActive="active">
+                            <p>Delete Account</p>
+                        </a></li>
+                    </ul>
+                </li>
+                <li class="dropdown nav-item" tabindex="0" *ngIf="isLoggedIn()"
+                    (keyup)="$event.key == 'Enter' ? openDropdownMenu(1) : null">
+                    <button role="heading" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                            data-toggle="dropdown">
+                        Recommendations by Category
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="nav-link dropdown-menu dropdown-menu-right" id="category-dropdown-menu"
+                        role="menu" aria-labelledby="dropdownMenu2">
+                        <li role="presentation" *ngFor="let category of serviceCategories">
+                            <a class="nav-link"
+                               [routerLink]= "['recommendations/service_category/'+category]">{{category}}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown nav-item" tabindex="0" *ngIf="isLoggedIn()"
+                    (keyup)="$event.key == 'Enter' ? openDropdownMenu(2) : null">
+                    <button role="heading" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu3"
+                            data-toggle="dropdown">
+                        Find services or places
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="nav-link dropdown-menu dropdown-menu-right" id="item-dropdown-menu"
+                        role="menu" aria-labelledby="dropdownMenu3">
+                        <li role="presentation">
+                            <a class="nav-link" routerLink="/place/find" routerLinkActive="active">
+                                <p>Find Places</p>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a class="nav-link" routerLink="/service/find" routerLinkActive="active">
+                                <p>Find Services</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" tabindex="0" *ngIf="isLoggedIn()"
+                    (keyup)="$event.key == 'Enter' ? router.navigate(['/service/add']) : null">
+                    <button role="link" class="btn nav-link addServiceButton" routerLink="/service/add"
+                            routerLinkActive="active">
+                        <p>Add Service</p>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

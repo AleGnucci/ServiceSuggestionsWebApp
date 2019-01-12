@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: io.vertx:vertx-auth-common:3.5.3:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/io.vertx/vertx-auth-common/jars/vertx-auth-common-3.5.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/io.vertx/vertx-auth-common/srcs/vertx-auth-common-3.5.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

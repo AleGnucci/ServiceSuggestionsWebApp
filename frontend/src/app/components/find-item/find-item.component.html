@@ -1,0 +1,71 @@
+<div class="page-main-header">
+    <div  class="container col-md-12 content-center">
+      <div id="inputs">
+        <h4 class="centering-div">Find {{itemType}}s</h4>
+        <div class="row form-group">
+          <form class="form col-md-6" id="inputDiv" autocomplete="off">
+            <fieldset class="input-group form-group-no-border input-lg">
+              <!--
+              <div class="itemPlaceInputDiv" *ngIf="isService">
+                <input type="text" id="itemPlaceInput" #placeName placeholder="Place..." class="form-control">
+                <label class = "full hide-element" for="itemPlaceInput" title="Place">Place</label>
+              </div>
+              -->
+              <div class="itemNameInputDiv">
+                <input type="text" id="itemNameInput" #itemName placeholder="Name..." class="form-control">
+                <label class = "full hide-element" for="itemNameInput" title="Name">Name</label>
+              </div>
+            </fieldset>
+            <div class="centering-div no-top-margin">
+              <!--
+              <div class="categorySelectDiv" *ngIf="isService">
+                <select id="categorySelect" #categorySelect class="form-control">
+                  <option value="" disabled selected class="invisible">Select a category</option>
+                  <option *ngFor="let category of serviceCategories" [value]="category">
+                    {{category}}
+                  </option>
+                </select>
+                <label class = "full hide-element" for="categorySelect" title="Category">Category</label>
+              </div>
+              <button class="btn btn-primary" type="submit" id="find-service-button-id" *ngIf="isService"
+                      (click)="findService('itemPlaceInput', 'categorySelect')">
+                Find
+              </button>
+              -->
+              <button class="btn btn-primary" type="submit" id="find-service-button-id" *ngIf="isService"
+                      (click)="findService('itemNameInput')">
+                Find
+              </button>
+              <button class="btn btn-primary" type="submit" *ngIf="!isService"
+                      (click)="findPlace('itemNameInput')">
+                Find
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div  class="col-md-10 result-div centering-div">
+        <div *ngIf="items.length==0 && searchCompleted">
+          <p>No items found.</p>
+        </div>
+        <ol class="list-group list-group-flush">
+          <li *ngFor="let item of items">
+            <div class="card list-group-item">
+              <div class="card-body">
+                <h4 class="card-text text-primary">{{item.name}}</h4>
+                <p class="card-text">{{item.location}}</p>
+                <p *ngIf="isService" class="card-text">Category: {{item.category}}</p>
+                <a class="card-link cool-link" (click) = "goToReviews(itemType, item.id)">
+                  Reviews
+                </a>
+                <a *ngIf="isService" href="#" class="card-link cool-link"
+                   [href]="'/reviews/place/'+item.placeId">Place</a>
+                <a *ngIf="isService" href="#" class="card-link cool-link"
+                   [href]="'/info/service/'+item.id">Info</a>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+  </div>
+</div>

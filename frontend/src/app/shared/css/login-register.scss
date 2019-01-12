@@ -1,0 +1,24 @@
+.container{
+  margin: auto;
+}
+
+#create-account-link{
+  margin-top: 5%;
+  color: rgb(55, 150, 131);
+  font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  text-decoration-color: rgb(55, 150, 131);
+  text-decoration-line: none;
+  text-decoration-style: solid;
+  text-transform: uppercase;
+}
+
+#passwordInputLabel{
+  display: inline-block;
+}
+
+input{
+  height: 45px;
+}

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: org.lenskit:lenskit-predict:3.0-M2:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.lenskit/lenskit-predict/jars/lenskit-predict-3.0-M2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.lenskit/lenskit-predict/srcs/lenskit-predict-3.0-M2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

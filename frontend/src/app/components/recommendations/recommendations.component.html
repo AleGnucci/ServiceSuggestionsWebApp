@@ -1,0 +1,27 @@
+<div class="page-main-header">
+  <div class="container content-center">
+    <div *ngIf="!searchCompleted" class="centering-div">
+      <p>Getting recommendations...</p>
+    </div>
+    <div  class="col-md-8 content-center centering-div" *ngIf="searchCompleted">
+      <h1>Service recommendations found:</h1>
+      <div *ngIf="recommendations.length==0">
+        <p>No recommendations found for you at this time.</p>
+        <p>Try another category or write more service reviews for this one.</p>
+      </div>
+      <ol class="list-group list-group-flush centering-div">
+        <li *ngFor="let recommendation of recommendations">
+      <div class="card list-group-item">
+        <div class="card-body centering-div">
+          <h2 class="card-title">{{recommendation.item.name}}</h2>
+          <app-stars [stars]="recommendation.stars"></app-stars>
+          <a href="#" class="card-link cool-link" [href]="'/reviews/place/'+recommendation.item.placeId">Place</a>
+          <a href="#" class="card-link cool-link" [href]="'/reviews/service/'+recommendation.item.id">Reviews</a>
+          <a href="#" class="card-link cool-link" [href]="'/info/service/'+recommendation.item.id">Info</a>
+        </div>
+      </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>

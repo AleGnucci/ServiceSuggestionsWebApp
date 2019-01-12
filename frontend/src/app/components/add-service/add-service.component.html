@@ -1,0 +1,65 @@
+<div class="page-main-header">
+    <div  class="container col-md-12 content-center">
+      <div id="inputs" class="centering-div">
+        <h2>Add {{itemType}}</h2>
+        <div class="row form-group">
+          <form class="form col-md-6" id="inputDiv" autocomplete="off">
+            <p>Add an existing service, by providing the right name, category, description and place address.
+              Wrong data will eventually be deleted.</p>
+            <fieldset class="rating input-group form-group-no-border input-lg centering-div">
+                <div class="itemNameInputDiv">
+                  <input type="text" id="itemNameInput" #itemName placeholder="Service Name" class="form-control">
+                  <label class = "full hide-element" for="itemNameInput" title="Name">Service Name</label>
+                </div>
+                  <div class="categorySelectDiv">
+                      <select id="categorySelect" #categorySelect class="form-control">
+                          <option value="" disabled selected class="invisible">Select a category</option>
+                          <option *ngFor="let category of serviceCategories" [value]="category">
+                              {{category}}
+                          </option>
+                      </select>
+                      <label class = "full hide-element" for="categorySelect" title="Category">Category</label>
+                  </div>
+              <textarea value="" placeholder="Description" id="descriptionArea" #descriptionArea class="form-control"
+                        maxlength="500"></textarea>
+              <div class="locationInputDiv">
+                <input class="form-control" type="text" id="locationInput" #location
+                       placeholder="Address (City, street, ...)" />
+                <label class = "full hide-element" for="locationInput" title="Location">Location</label>
+                <input type="hidden" id="latLngInput" name="latLng">
+                <button class="btn btn-default buttonCheckPlace" type="button"
+                        (click)="getPlaces('locationInput')">
+                  Check
+                </button>
+              </div>
+              <p *ngIf="places.length > 0" class="searchResultText">{{places.length}} locations found, choose one:</p>
+              <ol class="list-group list-group-flush centering-div">
+                <li *ngFor="let place of places">
+                  <div class="card list-group-item">
+                    <div class="card-body centering-div">
+                      <p class="card-text">{{place.display_name}}</p>
+                      <button class="btn btn-primary" type="button"
+                              (click) = "choosePlace(place.lat, place.lon, place.osm_id, 'latLngInput')">
+                        Select
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </fieldset>
+          </form>
+        </div>
+        <p *ngIf="placeSelected">Location selected:</p>
+        <div class="centering-div" id="iframe-div">
+          <iframe frameborder="0" scrolling="false" id="iframe-id"
+                  style="border: 1px solid black"></iframe>
+        </div>
+        <div>
+          <button class="btn btn-primary" type="submit"
+                  (click)="addService('categorySelect', 'itemNameInput', 'latLngInput', 'descriptionArea')">
+            Add
+          </button>
+        </div>
+      </div>
+  </div>
+</div>

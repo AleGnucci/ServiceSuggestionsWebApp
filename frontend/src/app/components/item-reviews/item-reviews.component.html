@@ -1,0 +1,56 @@
+<div class="page-main-header">
+    <div  class="container col-md-10 content-center centering-div" *ngIf="completedSetup">
+      <div *ngIf="!isServiceReviewsPage">
+        <h2>
+          Place: {{place.description}}
+        </h2>
+        <app-stars [stars]="stars" class="big-stars" *ngIf="reviews.length > 0"></app-stars>
+        <div id="iframe-div">
+          <iframe frameborder="0" scrolling="false" id="iframe-id"
+                  style="border: 1px solid black"></iframe>
+        </div>
+      </div>
+      <div *ngIf="isServiceReviewsPage" class="centering-div">
+        <h2>
+          Service: {{service.name}}
+        </h2>
+        <app-stars [stars]="stars" class="big-stars" *ngIf="reviews.length > 0"></app-stars>
+        <p>
+          Category: {{service.category}}
+        </p>
+        <a *ngIf="isServiceReviewsPage" class="card-link reviews-page-link cool-link"
+           [href]="'/reviews/place/'+service.placeId">Place</a>
+        <a *ngIf="isServiceReviewsPage" class="card-link reviews-page-link cool-link"
+           [href]="'/info/service/'+service.id">Info</a>
+      </div>
+      <div id="reviews-div">
+        <h3>
+          Reviews:
+        </h3>
+        <div *ngIf="reviews.length==0">
+          <p>No reviews found at this time.</p>
+        </div>
+        <ol class="list-group list-group-flush" *ngIf="reviews.length>0">
+          <li *ngFor="let review of reviews">
+            <div class="card list-group-item">
+              <div class="card-body centering-div">
+                <app-stars [stars]="review.stars"></app-stars>
+                <p class="card-text">{{review.comment}}</p>
+                <p class="card-text date-p">{{review.date.toLocaleDateString()}}</p>
+                <p class="card-text user-p">User: {{review.userName}}</p>
+                <button class="btn btn-primary" type="button" *ngIf="review.userName==this.userName"
+                        (click)="this.deleteReview()">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="col-md-10 center-block mt-3 centering-div"
+           *ngIf=!reviewsContainUserReview()>
+        <button class="btn btn-primary" type="button"
+                routerLink='add' routerLinkActive="active">Add your review</button>
+      </div>
+  </div>
+</div>

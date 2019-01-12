@@ -1,0 +1,40 @@
+<div class="page-main-header">
+  <div class="container content-center">
+      <div class="centering-div">
+        <h2>
+          Service: {{service.name}}
+        </h2>
+
+        <div class="description-div">
+          <label for="service-category">Category:</label>
+          <p id="service-category">
+            {{service.category}}
+          </p>
+        </div>
+
+        <div class="description-div">
+          <label for="place-description">Place:</label>
+          <p id="place-description">
+            {{placeDescription}}
+          </p>
+        </div>
+
+        <div class="description-div">
+          <label for="description">Description:</label>
+          <p id="description">
+            {{service.description}}
+          </p>
+        </div>
+        <div *ngIf="showVoteButtons">
+          <button class="btn btn-primary" type="button"
+                  (click) = "voteInfo(true)">
+            Vote for correct info
+          </button>
+          <button class="btn btn-default" type="button"
+                  (click) = "voteInfo(false)">
+            Vote for wrong info
+          </button>
+        </div>
+      </div>
+    </div>
+</div>
