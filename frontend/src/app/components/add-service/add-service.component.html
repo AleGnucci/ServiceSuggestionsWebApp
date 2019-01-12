@@ -1,5 +1,5 @@
 <div class="page-main-header">
-    <div  class="container col-md-12 content-center">
+    <div  class="container col-md-10 content-center">
       <div id="inputs" class="centering-div">
         <h2>Add {{itemType}}</h2>
         <div class="row form-group">
@@ -50,14 +50,14 @@
           </form>
         </div>
         <p *ngIf="placeSelected">Location selected:</p>
-        <div class="centering-div" id="iframe-div">
+        <div class="col-md-6 centering-div" id="iframe-div">
           <iframe frameborder="0" scrolling="false" id="iframe-id"
                   style="border: 1px solid black"></iframe>
         </div>
         <div>
           <button class="btn btn-primary" type="submit"
                   (click)="addService('categorySelect', 'itemNameInput', 'latLngInput', 'descriptionArea')">
-            Add
+            Add Service
           </button>
         </div>
       </div>
