@@ -1,5 +1,6 @@
 *.class
 *.log
+*.cache
 
 # User-specific stuff
 backend/.idea/**/workspace.xml
@@ -41,6 +42,8 @@ backend/out/
 frontend/out/
 backend/target/
 frontend/target/
+backend/.idea/vcs.xml
+frontend/.idea/vcs.xml
 
 # Vertx
 backend/.vertx

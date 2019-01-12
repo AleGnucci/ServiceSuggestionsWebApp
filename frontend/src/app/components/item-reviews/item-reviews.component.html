@@ -5,10 +5,13 @@
           Place: {{place.description}}
         </h2>
         <app-stars [stars]="stars" class="big-stars" *ngIf="reviews.length > 0"></app-stars>
-        <div id="iframe-div">
-          <iframe frameborder="0" scrolling="false" id="iframe-id"
-                  style="border: 1px solid black"></iframe>
+        <div class="col-md-6 centering-div">
+          <div id="iframe-div">
+            <iframe frameborder="0" scrolling="false" id="iframe-id"
+                    style="border: 1px solid black"></iframe>
+          </div>
         </div>
+
       </div>
       <div *ngIf="isServiceReviewsPage" class="centering-div">
         <h2>
