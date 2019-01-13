@@ -35,7 +35,7 @@
               <p *ngIf="places.length > 0" class="searchResultText">{{places.length}} locations found, choose one:</p>
               <ol class="list-group list-group-flush centering-div">
                 <li *ngFor="let place of places">
-                  <div class="card list-group-item">
+                  <div class="card tiny-card list-group-item">
                     <div class="card-body centering-div">
                       <p class="card-text">{{place.display_name}}</p>
                       <button class="btn btn-primary" type="button"

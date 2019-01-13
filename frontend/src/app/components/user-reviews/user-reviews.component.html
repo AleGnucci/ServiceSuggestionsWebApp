@@ -4,7 +4,7 @@
       <p>Getting the requested reviews...</p>
     </div>
     <div  class="col-md-8 content-center centering-div" *ngIf="searchCompleted">
-      <h1>{{isForCurrentUser ? 'Your' : 'User \'' + userName + '\' '}} {{itemType}} reviews:</h1>
+      <h1>{{isForCurrentUser ? 'Your' : 'User \"' + userName + '\" '}} {{itemType}} reviews:</h1>
       <div *ngIf="reviews.length==0">
         <p>You have reviewed zero {{itemType}}s.</p>
       </div>

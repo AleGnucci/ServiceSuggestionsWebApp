@@ -14,7 +14,9 @@ import recommendations.backend.common._
 import recommendations.backend.common.names._
 import recommendations.backend.db.util.{DefaultDocumentInserter, DefaultDocumentSearcher, DefaultReviewGetter}
 
+import scala.collection.mutable
 import scala.concurrent.ExecutionContext
+import scala.util.{Failure, Success}
 
 class DefaultDatabaseManager extends DatabaseManager {
 
@@ -89,7 +91,10 @@ class DefaultDatabaseManager extends DatabaseManager {
   }
 
   override def getUserName(userId: Long, resultHandler: Option[JsonObject] => Unit): Unit =
-    getItem(userId, USER_IDS, UserIdFields.ID, resultHandler)
+    mongoClient.findFuture(USER_IDS, Json.obj((UserIdFields.ID, userId))).onComplete({
+      case Success(mutable.Buffer(json)) => resultHandler(Some(json))
+      case Failure(_) => resultHandler(None)
+    })
 
   override def addUser(userName: String, password: String, resultHandler: Boolean => Unit): Unit =
     authManager.addUser(userName, password, success => {

@@ -12,20 +12,34 @@ li{
 }
 
 @media screen and (min-width: 2000px) {
-  li{
+  .small-item-list li{
     float: left;
     width: 25%;
   }
 }
 
 @media screen and (min-width: 1500px) and (max-width: 1999px) {
-  li{
+  .small-item-list li{
     float: left;
     width: 33%;
   }
 }
 
 @media screen and (min-width: 600px) and (max-width: 1499px) {
+  .small-item-list li{
+    float: left;
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 2500px) {
+  li{
+    float: left;
+    width: 33%;
+  }
+}
+
+@media screen and (min-width: 1500px) and (max-width: 2499px) {
   li{
     float: left;
     width: 50%;
@@ -33,9 +47,18 @@ li{
 }
 
 .card{
-  width: 90%;
-  max-width: 500px;
+  width: 98%;
+  max-width: 650px;
   margin-top: 2%;
+}
+
+.card-no-padding{
+  padding: 0;
+}
+
+.tiny-card{
+  width: 90% !important;
+  max-width: 400px;
 }
 
 .card-title{
@@ -57,14 +80,14 @@ li{
   max-width: none;
 }
 
-.user-p{
+.user-a{
   float:left;
   width:50%
 }
 
 .date-p{
   float: right;
-  width:50%
+  width:40%
 }
 
 h1{

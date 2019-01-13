@@ -48,9 +48,9 @@
         <div *ngIf="items.length==0 && searchCompleted">
           <p>No items found.</p>
         </div>
-        <ol class="list-group list-group-flush">
+        <ol class="list-group list-group-flush small-item-list">
           <li *ngFor="let item of items">
-            <div class="card list-group-item">
+            <div class="card tiny-card list-group-item">
               <div class="card-body">
                 <h4 class="card-text text-primary">{{item.name}}</h4>
                 <p class="card-text">{{item.location}}</p>

@@ -10,8 +10,8 @@ export class UserReviewsComponent implements OnInit {
 
   reviews: Array<Review> = [];
   searchCompleted = false;
-  itemType = this.getItemType();
   isForCurrentUser = this.httpUtilities.getUrlPart(2).includes('current');
+  itemType = this.getItemType();
   userId = this.isForCurrentUser ? 0 : +this.httpUtilities.getUrlPart(4);
   userName = "";
 

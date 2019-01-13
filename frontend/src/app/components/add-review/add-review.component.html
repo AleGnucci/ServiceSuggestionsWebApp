@@ -9,7 +9,7 @@
                              (ratingChange)="changeRating($event)" role=""></star-rating>
             </div>
             <textarea value="" placeholder="Comment" id="commentArea" #commentArea class="form-control"
-                    maxlength="500"></textarea>
+                    maxlength="1000"></textarea>
             <label class = "full hide-element" for="commentArea" title="Comment"></label>
             <button class="btn btn-primary" type="submit"
                     (click)="addReview(commentArea.value)">

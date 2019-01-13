@@ -119,10 +119,7 @@ export class HttpUtilitiesService {
   }
 
   getUserName(userId: number, action: (string) => void) {
-      this.httpGetOfType<UserIdItem>(Constants.restServerHost + '/user/' + userId + '/user_name',
-              res => {
-          action(res.userName);
-          console.log(res.userName)
-              })
+      this.httpGet<UserIdItem>(Constants.restServerHost + '/user/' + userId + '/user_name',
+              res => action(res.userName))
   }
 }
