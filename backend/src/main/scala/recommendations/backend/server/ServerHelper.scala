@@ -84,6 +84,9 @@ object ServerHelper {
   def getUserIdFromSession(implicit context: RoutingContext): Option[Long] =
     context.session().map(session => session.get(SessionNames.USER_ID).asInstanceOf[Long])
 
+  def getUserIdFromContext(implicit context: RoutingContext): Option[Long] =
+    getContextData("userId").map(userId => userId.toLong)
+
   def getUserNameFromSession(implicit context: RoutingContext): Option[String] =
     context.session().map(session => session.get(SessionNames.USER_NAME).asInstanceOf[String])
 

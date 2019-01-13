@@ -88,6 +88,9 @@ class DefaultDatabaseManager extends DatabaseManager {
     new DefaultReviewGetter(mongoClient, resultHandler).getReviews(collection, idFieldName, userId)
   }
 
+  override def getUserName(userId: Long, resultHandler: Option[JsonObject] => Unit): Unit =
+    getItem(userId, USER_IDS, UserIdFields.ID, resultHandler)
+
   override def addUser(userName: String, password: String, resultHandler: Boolean => Unit): Unit =
     authManager.addUser(userName, password, success => {
       if(!success){

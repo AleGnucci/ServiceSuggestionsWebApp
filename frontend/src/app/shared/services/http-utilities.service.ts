@@ -66,8 +66,17 @@ export class HttpUtilitiesService {
           res => this.setReviews(res, reviewsToShow), 'reviews')
   }
 
-  getReviewsByCurrentUser(urlPart: string, reviewsToShow: Review[], onCompletedAction: () => void) {
-      this.httpGet<ReviewWithTimestamp[]>(Constants.restServerHost + '/user/self/' + urlPart + '_reviews',
+  /**
+  * If no userId is provided, the userId of the current user is used
+  * */
+  getReviewsByUser(urlPart: string, reviewsToShow: Review[], onCompletedAction: () => void, userId?: number) {
+      let userUrlPart;
+      if (userId === undefined) {
+          userUrlPart = '/self/'
+      } else {
+          userUrlPart = '/user/' + userId + '/'
+      }
+      this.httpGet<ReviewWithTimestamp[]>(Constants.restServerHost + userUrlPart + urlPart + '_reviews',
           res => {
             this.setReviews(res, reviewsToShow);
             onCompletedAction();
@@ -91,7 +100,7 @@ export class HttpUtilitiesService {
           } else {
               itemId = review.placeId;
           }
-          reviewsToShow.push({itemId: itemId, userName: review.userName,
+          reviewsToShow.push({itemId: itemId, userName: review.userName, userId: review.userId,
           stars: review.stars, comment: review.comment, date: new Date(review.date * 1000)})
       })
   }
@@ -107,5 +116,13 @@ export class HttpUtilitiesService {
 
   getService(action: (Object) => void) {
       this.httpGet(Constants.restServerHost + '/service/' + this.getUrlPart(3), res => action(res))
+  }
+
+  getUserName(userId: number, action: (string) => void) {
+      this.httpGetOfType<UserIdItem>(Constants.restServerHost + '/user/' + userId + '/user_name',
+              res => {
+          action(res.userName);
+          console.log(res.userName)
+              })
   }
 }

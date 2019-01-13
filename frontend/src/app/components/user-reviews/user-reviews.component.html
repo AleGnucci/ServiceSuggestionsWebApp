@@ -1,10 +1,10 @@
 <div class="page-main-header">
   <div class="container content-center">
     <div *ngIf="!searchCompleted" class="centering-div">
-      <p>Getting your reviews...</p>
+      <p>Getting the requested reviews...</p>
     </div>
     <div  class="col-md-8 content-center centering-div" *ngIf="searchCompleted">
-      <h1>Your {{itemType}} reviews:</h1>
+      <h1>{{isForCurrentUser ? 'Your' : 'User \'' + userName + '\' '}} {{itemType}} reviews:</h1>
       <div *ngIf="reviews.length==0">
         <p>You have reviewed zero {{itemType}}s.</p>
       </div>
@@ -15,7 +15,9 @@
               <app-stars [stars]="review.stars"></app-stars>
               <p class="card-text">{{review.comment}}</p>
               <p class="card-text date-p">{{review.date.toLocaleDateString()}}</p>
-              <a href="#" class="card-link cool-link text-capitalize" [href]="'/reviews/' + itemType + '/'+review.itemId">
+              <a href="#" class="card-link cool-link text-capitalize"
+                 [title]="'Reviews of this specific ' + getItemType()"
+                 [href]="'/reviews/' + itemType + '/'+review.itemId">
                 {{itemType}}
               </a>
             </div>

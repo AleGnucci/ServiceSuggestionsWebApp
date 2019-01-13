@@ -15,6 +15,7 @@ export class ItemReviewsComponent implements OnInit {
     reviews: Array<Review> = [];
     userName = localStorage.getItem('userName');
     isServiceReviewsPage;
+    itemType;
     place: PlaceItemWithDescription;
     service: ServiceItem;
     stars = 3;
@@ -25,8 +26,8 @@ export class ItemReviewsComponent implements OnInit {
 
   ngOnInit() {
       this.isServiceReviewsPage = this.httpUtilities.getUrlPart(2) === 'service';
-      const itemType = this.isServiceReviewsPage ? 'service' : 'place';
-      this.httpUtilities.getReviews(itemType, this.reviews);
+      this.itemType = this.isServiceReviewsPage ? 'service' : 'place';
+      this.httpUtilities.getReviews(this.itemType, this.reviews);
       if (this.isServiceReviewsPage) {
           this.httpUtilities.getService(res => {
               this.service = res.item;
@@ -65,5 +66,9 @@ export class ItemReviewsComponent implements OnInit {
 
     reviewsContainUserReview() {
       return this.reviews.find(review => review.userName === this.userName) !== undefined;
+    }
+
+    capitalize(string: string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 }

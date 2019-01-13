@@ -11,6 +11,7 @@ interface ReviewWithTimestamp {
 interface Review {
     itemId: Number;
     userName: string;
+    userId: Number;
     stars: Number;
     comment: string;
     date: Date;
@@ -51,4 +52,9 @@ interface ServiceItem {
     name: string;
     placeId: Number;
     description: string;
+}
+
+interface UserIdItem {
+    userName: string;
+    id: number;
 }

@@ -61,10 +61,15 @@ object ServerHandlers {
     doIfDefined(name, dbManager.searchServices(name.get, dbArrayResultHandler))
   }
 
-  def handleGetUserItemReviews(isRequestForServiceReviews: Boolean)
+  def handleGetUserItemReviews(isRequestForServiceReviews: Boolean, isCurrentUser: Boolean)
                               (implicit context: RoutingContext, dbManager: DatabaseManager): Unit = {
-    val userId: Option[Long] = getUserIdFromSession
+    val userId: Option[Long] = if (isCurrentUser) getUserIdFromSession else getUserIdFromContext
     doIfDefined(userId, dbManager.getItemReviewsByUser(userId.get, isRequestForServiceReviews,  dbArrayResultHandler))
+  }
+
+  def handleGetUserName(implicit context: RoutingContext, dbManager: DatabaseManager): Unit = {
+    val userId = getUserIdFromContext
+    doIfDefined(userId, dbManager.getUserName(userId.get, dbResultHandler))
   }
 
   def handlePostUser(implicit context: RoutingContext, dbManager: DatabaseManager): Unit =

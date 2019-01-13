@@ -8,6 +8,8 @@ import recommendations.backend.common.ServiceVote
 
 trait DatabaseManager {
 
+  def getUserName(userId: Long, resultHandler: Option[JsonObject] => Unit): Unit
+
   def getPlaceReviews(placeId : Long, resultHandler : Option[JsonArray] => Unit)
 
   def addPlaceReview(review : JsonObject, userId : Long, placeId: Long, resultHandler : Boolean => Unit)

@@ -28,6 +28,12 @@
 
 - GET /user/self/place_reviews
 
+- GET /user/{userId}/service_reviews
+
+- GET /user/{userId}/place_reviews
+
+- GET /user/{userId}/user_name
+
 - POST /user/{userName}/ //register
 
 - DELETE /private/user/ /unregister

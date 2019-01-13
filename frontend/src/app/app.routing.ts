@@ -14,7 +14,7 @@ import {FindItemComponent} from './components/find-item/find-item.component';
 import {AddServiceComponent} from './components/add-service/add-service.component';
 import {ServiceInfoComponent} from './components/service-info/service-info.component';
 import {StarRatingModule} from 'angular-star-rating';
-import {MyReviewsComponent} from './components/my-reviews/my-reviews.component';
+import {UserReviewsComponent} from './components/user-reviews/user-reviews.component';
 import {LoginActivate} from './shared/utilities/LoginActivate';
 
 const routes: Routes = [
@@ -32,8 +32,10 @@ const routes: Routes = [
     { path: 'service/find', component: FindItemComponent, canActivate: [LoginActivate] },
     { path: 'place/find', component: FindItemComponent, canActivate: [LoginActivate] },
     { path: 'info/service/:service_id', component: ServiceInfoComponent, canActivate: [LoginActivate] },
-    { path: 'reviews/services_by_current_user', component: MyReviewsComponent, canActivate: [LoginActivate] },
-    { path: 'reviews/places_by_current_user', component: MyReviewsComponent, canActivate: [LoginActivate] },
+    { path: 'reviews/services_by_current_user', component: UserReviewsComponent, canActivate: [LoginActivate] },
+    { path: 'reviews/places_by_current_user', component: UserReviewsComponent, canActivate: [LoginActivate] },
+    { path: 'reviews/service/by_user/:user_id', component: UserReviewsComponent, canActivate: [LoginActivate] },
+    { path: 'reviews/place/by_user/:user_id', component: UserReviewsComponent, canActivate: [LoginActivate] },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

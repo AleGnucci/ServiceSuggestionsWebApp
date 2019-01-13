@@ -1,5 +1,5 @@
 <div class="page-main-header">
-    <div  class="container col-md-10 content-center centering-div" *ngIf="completedSetup">
+    <div  class="container col-md-8 content-center centering-div" *ngIf="completedSetup">
       <div *ngIf="!isServiceReviewsPage">
         <h2>
           Place: {{place.description}}
@@ -22,8 +22,10 @@
           Category: {{service.category}}
         </p>
         <a *ngIf="isServiceReviewsPage" class="card-link reviews-page-link cool-link"
+           title="Reviews and map of the place related to this service"
            [href]="'/reviews/place/'+service.placeId">Place</a>
         <a *ngIf="isServiceReviewsPage" class="card-link reviews-page-link cool-link"
+           title="Get more informations about this service or vote the correctness of those informations"
            [href]="'/info/service/'+service.id">Info</a>
       </div>
       <div id="reviews-div">
@@ -40,8 +42,12 @@
                 <app-stars [stars]="review.stars"></app-stars>
                 <p class="card-text">{{review.comment}}</p>
                 <p class="card-text date-p">{{review.date.toLocaleDateString()}}</p>
-                <p class="card-text user-p">User: {{review.userName}}</p>
-                <button class="btn btn-primary" type="button" *ngIf="review.userName==this.userName"
+                <a class="card-link cool-link user-p" id="user-link"
+                   [title]="capitalize(itemType) + ' reviews of this specific user'"
+                   [href]="'/reviews/'+ itemType +'/by_user/'+review.userId">
+                  {{review.userName}}
+                </a>
+                <button class="btn btn-primary" id="delete-button" type="button" *ngIf="review.userName==this.userName"
                         (click)="this.deleteReview()">
                   Delete
                 </button>

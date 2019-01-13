@@ -17,7 +17,7 @@ import { StarsComponent } from './stars/stars.component';
 import {AddServiceComponent} from './add-service/add-service.component';
 import { ServiceInfoComponent } from './service-info/service-info.component';
 import {StarRatingModule} from 'angular-star-rating';
-import { MyReviewsComponent } from './my-reviews/my-reviews.component';
+import { UserReviewsComponent } from './user-reviews/user-reviews.component';
 
 @NgModule({
     imports: [
@@ -41,7 +41,7 @@ import { MyReviewsComponent } from './my-reviews/my-reviews.component';
         FindItemComponent,
         StarsComponent,
         ServiceInfoComponent,
-        MyReviewsComponent
+        UserReviewsComponent
     ],
     exports: [ ComponentsComponent ]
 })
