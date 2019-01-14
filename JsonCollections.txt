@@ -21,7 +21,9 @@ services:
 	"category" : ..,
 	"name" : .., 
 	"description": ..,
-	"placeId" : .. //chiave importata da Place
+	"placeId" : .., //chiave importata da Place
+	"startDateTime" : .., //campo opzionale, es: 2022-02-05T15:02
+	"endDateTime" : .., //campo opzionale, es:   2022-02-05T15:02
 }
 
 

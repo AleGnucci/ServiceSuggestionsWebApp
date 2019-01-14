@@ -6,4 +6,6 @@ object ServiceFields {
   val NAME = "name"
   val PLACE_ID = "placeId"
   val DESCRIPTION = "description"
+  val START_DATE_TIME = "startDateTime"
+  val END_DATE_TIME = "endDateTime"
 }

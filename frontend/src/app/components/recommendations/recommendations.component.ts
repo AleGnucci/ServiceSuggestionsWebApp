@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {HttpUtilitiesService} from '../../shared/services/http-utilities.service';
 import {Constants} from '../../shared/constants/Constants';
 
@@ -15,9 +15,11 @@ export class RecommendationsComponent implements OnInit {
   recommendations: Service[] = [];
   searchCompleted = false;
 
-  constructor(private http: HttpClient, private router: Router, private httpUtilities: HttpUtilitiesService) { }
+  constructor(private http: HttpClient, private router: Router, private httpUtilities: HttpUtilitiesService) {
+  }
 
   ngOnInit() {
+      this.recommendations = [];
       this.httpUtilities.httpGet(Constants.restServerHost + '/private/recommendations/service_category/' +
           this.httpUtilities.getUrlPart(3) + '/get', res => {
           this.setRecommendations(res.recommendations);
@@ -25,14 +27,14 @@ export class RecommendationsComponent implements OnInit {
       })
   }
 
-  setRecommendations(serviceIds: Number[]) {
+  private setRecommendations(serviceIds: Number[]) {
       serviceIds.forEach(serviceId => {
           this.httpUtilities.httpGet<Service>(Constants.restServerHost + '/service/' + serviceId,
               res => this.setRecommendation(res))
     })
   }
 
-  setRecommendation(service: Service) {
+  private setRecommendation(service: Service) {
     this.recommendations.push(service)
   }
 

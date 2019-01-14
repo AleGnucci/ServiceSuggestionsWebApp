@@ -66,9 +66,15 @@ export class ItemReviewsComponent implements OnInit {
         })
     }
 
-    reviewsContainUserReview() {
+    reviewsContainUserReview(): boolean {
       return this.reviews.find(review => review.userName === this.userName) !== undefined;
     }
+
+    /*
+    isServiceStarted(): boolean {
+      return this.service.startDateTime === undefined || new Date(this.service.startDateTime) < new Date()
+    }
+    */
 
     capitalize(string: string) {
         return StringUtilities.capitalizeFirstLetter(string)

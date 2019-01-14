@@ -1,9 +1,9 @@
 <div class="page-main-header">
-  <div class="container content-center">
+  <div class="container col-md-8 content-center low-top-margin">
     <div *ngIf="!searchCompleted" class="centering-div">
       <p>Getting the requested reviews...</p>
     </div>
-    <div  class="col-md-8 content-center centering-div" *ngIf="searchCompleted">
+    <div class="centering-div-no-margin" *ngIf="searchCompleted">
       <h1>{{isForCurrentUser ? 'Your' : 'User \"' + userName + '\" '}} {{itemType}} reviews:</h1>
       <a class="text-capitalize reviews-page-link cool-link"
          [href]="getOtherReviewsLink()"

@@ -4,7 +4,7 @@
         <h2>Add {{itemType}}</h2>
         <div class="row form-group">
           <form class="form col-md-6" id="inputDiv" autocomplete="off">
-            <p>Add an existing service, by providing the right name, category, description and place address.
+            <p>Add an existing service, by providing the required information.
               Wrong data will eventually be deleted.</p>
             <fieldset class="rating input-group form-group-no-border input-lg centering-div">
                 <div class="itemNameInputDiv">
@@ -22,6 +22,14 @@
                   </div>
               <textarea value="" placeholder="Description" id="descriptionArea" #descriptionArea class="form-control"
                         maxlength="500"></textarea>
+              <p>The two following dates (start date and end date) are optional:</p>
+              <label class ="full hide-element" for="startDate" title="Start Date">Start Date</label>
+              <input type="datetime-local" placeholder="Start Date and Time (optional)"
+                     id="startDate" class="form-control date-input">
+              <label class ="full hide-element" for="endDate" title="End Date">End Date</label>
+              <input type="datetime-local" placeholder="End Date and Time (optional)"
+                     id="endDate" class="form-control date-input">
+              <p>Write a city and an address, then click "Check", then select the right spot:</p>
               <div class="locationInputDiv">
                 <input class="form-control" type="text" id="locationInput" #location
                        placeholder="Address (City, street, ...)" />

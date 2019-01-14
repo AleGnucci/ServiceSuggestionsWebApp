@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-translate">
             <a class="fa fa-home fa-2x home-button" title="Homepage"
-               *ngIf="this.router.url != '/'" tabindex="0" routerLink="/"></a>
+               *ngIf="this.router.url != '/'" tabindex="1" routerLink="/"></a>
             <a class="fa fa-chevron-circle-left back-button fa-2x button" title="Back"
                *ngIf="this.router.url != '/'" tabindex="0"
                (click)="this.location.back()"></a>
@@ -63,7 +63,7 @@
                         role="menu" aria-labelledby="dropdownMenu2">
                         <li role="presentation" *ngFor="let category of serviceCategories">
                             <a class="nav-link"
-                               [routerLink]= "['recommendations/service_category/'+category]">{{category}}
+                               [href]= "['recommendations/service_category/'+category]">{{category}}
                             </a>
                         </li>
                     </ul>

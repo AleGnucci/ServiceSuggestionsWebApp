@@ -52,6 +52,8 @@ interface ServiceItem {
     name: string;
     placeId: Number;
     description: string;
+    startDateTime?: string;
+    endDateTime?: string;
 }
 
 interface UserIdItem {

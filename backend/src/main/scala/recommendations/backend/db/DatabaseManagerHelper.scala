@@ -67,7 +67,12 @@ object DatabaseManagerHelper {
   def isServiceValid(service: JsonObject): Boolean = {
     val result = service.containsKey(ServiceFields.NAME) && service.containsKey(ServiceFields.CATEGORY) &&
       service.containsKey(ServiceFields.PLACE_ID) && service.containsKey(ServiceFields.DESCRIPTION) &&
-      service.size() == 4 && isJsonObjectValid(service)
+      (service.size() == 4 ||
+        service.size() == 5 && (service.containsKey(ServiceFields.START_DATE_TIME) ||
+          service.containsKey(ServiceFields.END_DATE_TIME)) ||
+        service.size() == 6 && (service.containsKey(ServiceFields.START_DATE_TIME) &&
+        service.containsKey(ServiceFields.END_DATE_TIME))
+        ) && isJsonObjectValid(service)
     try {
       ServiceCategory.withName(service.getString(ServiceFields.CATEGORY))
     } catch{

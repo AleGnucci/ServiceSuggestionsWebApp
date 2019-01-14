@@ -19,6 +19,20 @@
           </p>
         </div>
 
+        <div class="description-div" *ngIf="service.startDateTime !== undefined">
+          <label for="place-description">Start Date and time:</label>
+          <p id="start-date">
+            {{dateTimeToString(service.startDateTime)}}
+          </p>
+        </div>
+
+        <div class="description-div" *ngIf="service.endDateTime !== undefined">
+          <label for="place-description">End Date and time:</label>
+          <p id="end-date">
+            {{dateTimeToString(service.endDateTime)}}
+          </p>
+        </div>
+
         <div class="description-div">
           <label for="description">Description:</label>
           <p id="description">

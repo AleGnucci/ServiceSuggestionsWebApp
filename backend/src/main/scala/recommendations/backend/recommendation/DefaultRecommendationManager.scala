@@ -1,6 +1,7 @@
 package recommendations.backend.recommendation
 
 import java.util
+import java.util.Date
 
 import io.vertx.lang.scala.json.{Json, JsonObject}
 import io.vertx.scala.ext.mongo.MongoClient
@@ -54,11 +55,16 @@ class DefaultRecommendationManager(mongoClient: MongoClient) extends Recommendat
   }
 
   override def recommendServices(userId: Long, serviceCategory: ServiceCategory.Value, resHandler : List[Long] => Unit)
-                                (implicit ctx : ExecutionContext): Unit =
+                                (implicit ctx : ExecutionContext): Unit = {
+    val dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
     mongoClient.findFuture(SERVICES, Json.obj((ServiceFields.CATEGORY, serviceCategory.toString))).onComplete{
-      case Success(services) => findRecommendedServices(userId, res => resHandler(res), services.toList)
+      case Success(services) => findRecommendedServices(userId, res => resHandler(res),
+        services.filter(service => !service.containsKey(ServiceFields.END_DATE_TIME) ||
+          dateFormat.parse(service.getString(ServiceFields.END_DATE_TIME)).after(new Date())).toList)
       case Failure(_) => resHandler(List.empty)
     }
+  }
+
 
   private def findRecommendedServices(userId: Long, resHandler : List[Long] => Unit, services: List[JsonObject])
                                      (implicit ctx : ExecutionContext):Unit = {

@@ -46,4 +46,8 @@ export class ServiceInfoComponent implements OnInit {
         this.showOrHideVoteButtons();
     });
   }
+
+  dateTimeToString(dateTime: string): string {
+      return dateTime.split('T').join(' ')
+  }
 }

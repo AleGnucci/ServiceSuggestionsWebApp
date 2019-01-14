@@ -11,7 +11,6 @@
                     style="border: 1px solid black"></iframe>
           </div>
         </div>
-
       </div>
       <div *ngIf="isServiceReviewsPage" class="centering-div">
         <h2>
@@ -25,7 +24,7 @@
            title="Reviews and map of the place related to this service"
            [href]="'/reviews/place/'+service.placeId">Place</a>
         <a *ngIf="isServiceReviewsPage" class="card-link reviews-page-link cool-link"
-           title="Get informations about this service or vote the correctness of those informations"
+           title="Get information about this service or vote the correctness of those information"
            [href]="'/info/service/'+service.id">Info</a>
       </div>
       <div id="reviews-div">
