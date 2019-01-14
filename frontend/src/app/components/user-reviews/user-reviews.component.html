@@ -5,6 +5,11 @@
     </div>
     <div  class="col-md-8 content-center centering-div" *ngIf="searchCompleted">
       <h1>{{isForCurrentUser ? 'Your' : 'User \"' + userName + '\" '}} {{itemType}} reviews:</h1>
+      <a class="text-capitalize reviews-page-link cool-link"
+         [href]="getOtherReviewsLink()"
+        [title]="getOtherReviewsTitle()">
+        {{getOtherItemType() + ' reviews'}}
+      </a>
       <div *ngIf="reviews.length==0">
         <p>You have reviewed zero {{itemType}}s.</p>
       </div>
@@ -15,11 +20,18 @@
               <app-stars [stars]="review.stars"></app-stars>
               <p class="card-text">{{review.comment}}</p>
               <p class="card-text date-p">{{review.date.toLocaleDateString()}}</p>
-              <a href="#" class="card-link cool-link text-capitalize"
-                 [title]="'Reviews of this specific ' + getItemType()"
+              <a href="#" class="card-link cool-link text-capitalize service-a" id="user-link"
+                 [title]="'Reviews of this ' + getItemType()"
                  [href]="'/reviews/' + itemType + '/'+review.itemId">
                 {{itemType}}
               </a>
+              <br>
+              <div id="delete-button-div" class="centering-div">
+                <button class="btn btn-primary" id="delete-button" type="button" *ngIf="isCurrentUser()"
+                        (click)="this.deleteReview(review.itemId)">
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
         </li>

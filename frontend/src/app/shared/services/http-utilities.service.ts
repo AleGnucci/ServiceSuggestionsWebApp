@@ -105,8 +105,7 @@ export class HttpUtilitiesService {
       })
   }
 
-  deleteReview(reviews: Review[], action: () => void) {
-      const itemId = Number.parseInt(this.getUrlPart(3));
+  deleteReview(reviews: Review[], itemId: number, action: () => void) {
       const itemType = (this.getUrlPart(2).includes('service')) ? 'service' : 'place';
       this.httpDelete(Constants.restServerHost + '/private/' + itemType + '/' + itemId + '/review', () => {
           reviews.length = 0;

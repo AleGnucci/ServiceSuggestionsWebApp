@@ -42,16 +42,18 @@
                 <app-stars [stars]="review.stars"></app-stars>
                 <p class="card-text">{{review.comment}}</p>
                 <p class="card-text date-p">{{review.date.toLocaleDateString()}}</p>
-                <a class="card-link cool-link user-a" id="user-link"
+                <a class="card-link cool-link user-a" id="service-link"
                    [title]="capitalize(itemType) + ' reviews of this user'"
                    [href]="'/reviews/'+ itemType +'/by_user/'+review.userId">
                   {{review.userName}}
                 </a>
                 <br>
-                <button class="btn btn-primary" id="delete-button" type="button" *ngIf="review.userName==this.userName"
-                        (click)="this.deleteReview()">
-                  Delete
-                </button>
+                <div id="delete-button-div" class="centering-div">
+                  <button class="btn btn-primary" id="delete-button" type="button" *ngIf="review.userName==this.userName"
+                          (click)="this.deleteReview()">
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </li>

@@ -9,7 +9,7 @@ import { StarRatingModule } from 'angular-star-rating';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

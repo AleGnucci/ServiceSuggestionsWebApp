@@ -28,11 +28,15 @@ app-stars{
   font-size: medium;
 }
 
-#user-link{
+#user-link, #service-link{
   color: #379683 !important;
-  margin-left: 10%;
+  margin-left: 14%;
   margin-right: auto;
   width: auto;
-  max-width: 40%;
+  max-width: 36%;
+}
+
+#delete-button-div{
+  margin-bottom: 0;
 }
 

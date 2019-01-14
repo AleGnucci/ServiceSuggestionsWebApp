@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpUtilitiesService} from '../../shared/services/http-utilities.service';
+import {Toast} from '../../shared/utilities/Toast';
+import {StringUtilities} from '../../shared/utilities/StringUtilities';
 
 @Component({
   selector: 'app-my-reviews',
   templateUrl: './user-reviews.component.html',
-  styleUrls: ['../../shared/css/card-list.scss']
+  styleUrls: ['../../shared/css/reviews.scss']
 })
 export class UserReviewsComponent implements OnInit {
 
@@ -31,6 +33,35 @@ export class UserReviewsComponent implements OnInit {
   getItemType(){
     const pluralItemType = this.httpUtilities.getUrlPart(2).split('_')[0];
     return this.isForCurrentUser ? pluralItemType.substring(0, pluralItemType.length - 1) : pluralItemType
+  }
+
+  deleteReview(itemId: number) {
+    this.httpUtilities.deleteReview(this.reviews, itemId, () => {
+      this.ngOnInit();
+      Toast.toast('Review deleted')
+    })
+  }
+
+  isCurrentUser(): boolean {
+    return this.isForCurrentUser || this.userName === localStorage.getItem('userName');
+  }
+
+  getOtherItemType(): string {
+    return this.itemType === 'service' ? 'place' : 'service'
+  }
+
+  getOtherReviewsLink(): string {
+    const otherItemType = this.getOtherItemType();
+    if(this.isForCurrentUser){
+      return '/reviews/' + otherItemType + 's_by_current_user/';
+    } else {
+      return '/reviews/' + otherItemType + '/by_user/' + this.userId;
+    }
+
+  }
+
+  getOtherReviewsTitle(): string {
+    return StringUtilities.capitalizeFirstLetter(this.getOtherItemType()) + ' reviews from this user';
   }
 
 }

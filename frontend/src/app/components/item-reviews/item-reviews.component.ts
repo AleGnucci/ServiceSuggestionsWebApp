@@ -4,6 +4,7 @@ import {MapHelper} from '../../shared/utilities/MapHelper';
 import {CoordinatesEncoderDecoderService} from '../../shared/services/coordinates-encoder-decoder.service';
 import {Constants} from '../../shared/constants/Constants';
 import {Toast} from '../../shared/utilities/Toast';
+import {StringUtilities} from '../../shared/utilities/StringUtilities';
 
 @Component({
   selector: 'app-place-reviews',
@@ -58,7 +59,8 @@ export class ItemReviewsComponent implements OnInit {
   }
 
     deleteReview() {
-        this.httpUtilities.deleteReview(this.reviews, () => {
+        this.httpUtilities.deleteReview(this.reviews, Number.parseInt(this.httpUtilities.getUrlPart(3)),
+            () => {
             this.ngOnInit();
             Toast.toast('Review deleted')
         })
@@ -69,6 +71,6 @@ export class ItemReviewsComponent implements OnInit {
     }
 
     capitalize(string: string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
+        return StringUtilities.capitalizeFirstLetter(string)
     }
 }
