@@ -13,6 +13,7 @@ frontend/.idea/**/tasks.xml
 frontend/.idea/**/usage.statistics.xml
 frontend/.idea/**/dictionaries
 frontend/.idea/**/shelf
+backend/.idea/modules/Service_Suggestions_Web_App.iml
 
 # Generated files
 backend/.idea/**/contentModel.xml
