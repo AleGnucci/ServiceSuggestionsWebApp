@@ -11,7 +11,9 @@
 .dropdown-menu{
   background-color: #379683 !important;
   max-width: 200px !important;
+  max-height: 300px;
   line-height: normal !important;
+  overflow-y: auto;
 }
 
 #account-dropdown-menu:hover, #item-dropdown-menu:hover, #category-dropdown-menu:hover{

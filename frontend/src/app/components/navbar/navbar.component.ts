@@ -5,6 +5,7 @@ import {Constants} from '../../shared/constants/Constants';
 import {HttpUtilitiesService} from '../../shared/services/http-utilities.service';
 import {Router} from '@angular/router';
 import {Toast} from '../../shared/utilities/Toast';
+import {CookieManager} from '../../shared/utilities/CookieManager';
 
 @Component({
     selector: 'app-navbar',
@@ -14,35 +15,7 @@ import {Toast} from '../../shared/utilities/Toast';
 
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
-    private SESSION_COOKIE_NAME = 'vertx-web.session';
     serviceCategories = Constants.serviceCategories;
-
-    private static getCookie(name: string): string {
-        const cookies: Array<string> = document.cookie.split(';');
-        const cookiesCount: number = cookies.length;
-        const cookieName = `${name}=`;
-        let c: string;
-
-        for (let i = 0; i < cookiesCount; i += 1) {
-            c = cookies[i].replace(/^\s+/g, '');
-            if (c.indexOf(cookieName) === 0) {
-                return c.substring(cookieName.length, c.length);
-            }
-        }
-        return '';
-    }
-
-    private static deleteCookie(name) {
-        NavbarComponent.setCookie(name, '', -1);
-    }
-
-    private static setCookie(name: string, value: string, expireDays: number, path: string = '') {
-        const date = new Date();
-        date.setTime(date.getTime() + expireDays * 24 * 60 * 60 * 1000);
-        const expires = `expires=${date.toUTCString()}` + ';path=/';
-        const cpath = path ? `; path=${path}` : '';
-        document.cookie = `${name}=${value}; ${expires}${cpath}`;
-    }
 
     constructor(public location: Location, private element: ElementRef, private httpUtilities: HttpUtilitiesService,
                 public router: Router) {}
@@ -71,7 +44,7 @@ export class NavbarComponent implements OnInit {
         this.httpUtilities.httpDelete(Constants.restServerHost + '/user/session',
             () => {
             localStorage.removeItem('userName');
-            NavbarComponent.deleteCookie(this.SESSION_COOKIE_NAME);
+            CookieManager.deleteCookie(CookieManager.SESSION_COOKIE_NAME);
             setTimeout(() => location.href = '/', 0);
             Toast.toast('Logged out successfully')
         });
@@ -79,7 +52,7 @@ export class NavbarComponent implements OnInit {
 
     isLoggedIn() {
         return localStorage.getItem('userName') !== null &&
-            NavbarComponent.getCookie(this.SESSION_COOKIE_NAME) !== '';
+            CookieManager.getCookie(CookieManager.SESSION_COOKIE_NAME) !== '';
     }
 
     openDropdownMenu(dropdownMenuIndex: number) {

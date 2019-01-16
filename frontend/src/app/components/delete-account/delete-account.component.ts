@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpUtilitiesService} from '../../shared/services/http-utilities.service';
 import {Constants} from '../../shared/constants/Constants';
 import {Toast} from '../../shared/utilities/Toast';
+import {CookieManager} from '../../shared/utilities/CookieManager';
 
 @Component({
   selector: 'app-delete-account',
@@ -17,6 +18,11 @@ export class DeleteAccountComponent implements OnInit {
 
   deleteAccount(){
     this.httpUtilities.httpDelete(Constants.restServerHost + '/private/user',
-        () => Toast.toast('Account deleted successfully'))
+        () => {
+          localStorage.removeItem('userName');
+          CookieManager.deleteCookie(CookieManager.SESSION_COOKIE_NAME);
+          setTimeout(() => location.href = '/', 0);
+          Toast.toast('Account deleted successfully')
+        })
   }
 }

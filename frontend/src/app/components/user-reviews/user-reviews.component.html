@@ -10,7 +10,7 @@
         [title]="getOtherReviewsTitle()">
         {{getOtherItemType() + ' reviews'}}
       </a>
-      <div *ngIf="reviews.length==0">
+      <div class="centering-div" *ngIf="reviews.length==0">
         <p>You have reviewed zero {{itemType}}s.</p>
       </div>
       <ol class="list-group list-group-flush centering-div">
