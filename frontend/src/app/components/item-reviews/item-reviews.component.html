@@ -27,6 +27,11 @@
            title="Get information about this service or vote the correctness of those information"
            [href]="'/info/service/'+service.id">Info</a>
       </div>
+      <div class="col-md-10 center-block mt-3 centering-div"
+           *ngIf="!reviewsContainUserReview() && isReviewButtonEnabled()">
+        <button class="btn btn-primary" type="button"
+                routerLink='add' routerLinkActive="active">Add your review</button>
+      </div>
       <div id="reviews-div">
         <h3>
           Reviews:
@@ -57,11 +62,6 @@
             </div>
           </li>
         </ol>
-      </div>
-      <div class="col-md-10 center-block mt-3 centering-div"
-           *ngIf=!reviewsContainUserReview()>
-        <button class="btn btn-primary" type="button"
-                routerLink='add' routerLinkActive="active">Add your review</button>
       </div>
   </div>
 </div>

@@ -15,9 +15,12 @@
             <div class="card-body centering-div">
               <h2 class="card-title">{{recommendation.item.name}}</h2>
               <app-stars [stars]="recommendation.stars"></app-stars>
-              <a href="#" class="card-link cool-link" [href]="'/reviews/place/'+recommendation.item.placeId">Place</a>
-              <a href="#" class="card-link cool-link" [href]="'/reviews/service/'+recommendation.item.id">Reviews</a>
-              <a href="#" class="card-link cool-link" [href]="'/info/service/'+recommendation.item.id">Info</a>
+              <a href="#" class="card-link cool-link" [href]="'/reviews/place/'+recommendation.item.placeId"
+                 title="Reviews and map of the place related to this service">Place</a>
+              <a href="#" class="card-link cool-link" [href]="'/reviews/service/'+recommendation.item.id"
+                 title="Reviews for this service">Reviews</a>
+              <a href="#" class="card-link cool-link" [href]="'/info/service/'+recommendation.item.id"
+                 title="Get information about this service or vote the correctness of those information">Info</a>
             </div>
           </div>
         </li>

@@ -65,7 +65,6 @@ class DefaultRecommendationManager(mongoClient: MongoClient) extends Recommendat
     }
   }
 
-
   private def findRecommendedServices(userId: Long, resHandler : List[Long] => Unit, services: List[JsonObject])
                                      (implicit ctx : ExecutionContext):Unit = {
     val serviceIds = services.map(service => service.getLong(ServiceFields.ID))

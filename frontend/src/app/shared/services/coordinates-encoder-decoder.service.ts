@@ -10,29 +10,12 @@ export class CoordinatesEncoderDecoderService {
 
   private baseUrl = 'https://nominatim.openstreetmap.org/';
 
-  /*
-  private static getSpecialPhraseForServiceType(serviceType: string): string { // TODO
-      return serviceType
-  }
-  */
-
-  private static getOverpassNodeType(serviceType: string): [string, string] {
-      const amenity = 'amenity';
-      switch (serviceType) {
-          case Constants.serviceCategories[0]: { // Art
-              return [amenity, 'arts_centre']
-          }
-          case Constants.serviceCategories[1]: { // Clothes
-              return [amenity, 'arts_centre']
-          }
-      }
-  }
-
   constructor(private httpUtilities: HttpUtilitiesService) { }
 
   getEncodedResults(description: string, resultHandler: (res: NominatimLocation[]) => void, errorHandler?: () => void) {
       const descriptionWithoutSpaces = this.removeSpaces(description);
-      this.httpUtilities.httpGet(this.baseUrl + '?format=json&q=' + descriptionWithoutSpaces,
+      const viewBox = 'viewbox=6.7499552751%2C36.619987291%2C18.4802470232%2C47.1153931748&bounded=1'; //italy bounding box
+      this.httpUtilities.httpGet(this.baseUrl + '?format=json&q=' + descriptionWithoutSpaces + '&' + viewBox,
           res => {
           if (res[0] === undefined) {
               if (errorHandler !== undefined) {
@@ -45,17 +28,6 @@ export class CoordinatesEncoderDecoderService {
 
   private removeSpaces(text: string): string {
       return text.split(' ').join('+')
-  }
-
-  getEncodedResultsByType(serviceCategory: string, place: string,
-                          resultHandler: (res: NominatimLocation[]) => void, errorHandler?: () => void) {
-      const overpassUrl = 'http://overpass-api.de/api/interpreter?data=[out:json];';
-      const placeWithoutSpaces = this.removeSpaces(place);
-      /*
-      const specialPhrase = CoordinatesEncoderDecoderService.getSpecialPhraseForServiceType(serviceCategory);
-      const queryUrl = specialPhrase + ' in ' + place;
-      this.getEncodedResults(queryUrl, resultHandler, errorHandler)
-      */
   }
 
   getNodeById(nodeId: number, resultHandler: (res: NominatimLocation) => void) {

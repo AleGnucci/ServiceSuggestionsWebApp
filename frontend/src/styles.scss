@@ -50,8 +50,13 @@
   to {bottom: 0; opacity: 0;}
 }
 
+html {
+  height: 100%;
+}
+
 body{
   padding-top: 53px;
+  min-height: 100% !important;
 }
 
 .content-center{
@@ -79,15 +84,13 @@ body{
 
 .page-main-header{
   background: linear-gradient(#404040, rgba(111, 111, 111, 1)) scroll;
-  height: 100vh;
-  max-height: 1050px;
   padding: 0;
   color: #FFFFFF;
   position: relative;
   display: flex;
   flex-direction: column;
   margin: 5px 0 0;
-  min-height: calc(100vh - 123px) !important;
+  height: calc(100vh - 123px) !important;
 
   background-clip: border-box;
   background-origin: padding-box;

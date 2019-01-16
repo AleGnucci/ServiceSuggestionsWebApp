@@ -5,6 +5,7 @@ import {Constants} from '../../shared/constants/Constants';
 import {Location} from '@angular/common';
 import {Toast} from '../../shared/utilities/Toast';
 import {CoordinatesEncoderDecoderService} from '../../shared/services/coordinates-encoder-decoder.service';
+import {DateChecker} from '../../shared/utilities/DateChecker';
 
 @Component({
   selector: 'app-add-review',
@@ -13,7 +14,7 @@ import {CoordinatesEncoderDecoderService} from '../../shared/services/coordinate
 })
 export class AddReviewComponent implements OnInit {
 
-  item = {name: ''};
+  item = {name: '', id: 0, category: '', placeId: 0, description: ''};
   isServiceReview = false;
   stars = 0;
 
@@ -27,7 +28,8 @@ export class AddReviewComponent implements OnInit {
           this.httpUtilities.httpGet(Constants.restServerHost + '/service/' + itemId,
                   res => this.item = res.item);
       } else {
-          this.coordEncoderDecoder.getNodeById(itemId, res => this.item = {name: res.display_name})
+          this.coordEncoderDecoder.getNodeById(itemId,
+                  res => this.item = {name: res.display_name, id: 0, category: '', placeId: 0, description: ''})
       }
   }
 
@@ -44,28 +46,6 @@ export class AddReviewComponent implements OnInit {
     }
   }
 
-  /*
-  private getStars() {
-    if (this.getInput('star5').checked) {
-      return 5
-    } else if (this.getInput('star4').checked) {
-      return 4
-    } else if (this.getInput('star3').checked) {
-      return 3
-    } else if (this.getInput('star2').checked) {
-      return 2
-    } else if (this.getInput('star1').checked) {
-      return 1
-    } else {
-      return 0
-    }
-  }
-
-  private getInput(name: string): HTMLInputElement {
-      return <HTMLInputElement>document.getElementById(name)
-  }
-  */
-
   changeRating(event: any) {
       this.stars = event.rating;
   }
@@ -79,5 +59,9 @@ export class AddReviewComponent implements OnInit {
     }
     return url + this.httpUtilities.getUrlPart(3) + '/review'
   }
+
+    isAddReviewButtonEnabled(): boolean {
+        return (!this.isServiceReview) || DateChecker.checkIfServiceReviewable(this.item)
+    }
 
 }

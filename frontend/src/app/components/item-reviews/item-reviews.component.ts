@@ -5,6 +5,7 @@ import {CoordinatesEncoderDecoderService} from '../../shared/services/coordinate
 import {Constants} from '../../shared/constants/Constants';
 import {Toast} from '../../shared/utilities/Toast';
 import {StringUtilities} from '../../shared/utilities/StringUtilities';
+import {DateChecker} from '../../shared/utilities/DateChecker';
 
 @Component({
   selector: 'app-place-reviews',
@@ -70,11 +71,9 @@ export class ItemReviewsComponent implements OnInit {
       return this.reviews.find(review => review.userName === this.userName) !== undefined;
     }
 
-    /*
-    isServiceStarted(): boolean {
-      return this.service.startDateTime === undefined || new Date(this.service.startDateTime) < new Date()
+    isReviewButtonEnabled(): boolean {
+      return (!this.isServiceReviewsPage) || DateChecker.checkIfServiceReviewable(this.service)
     }
-    */
 
     capitalize(string: string) {
         return StringUtilities.capitalizeFirstLetter(string)

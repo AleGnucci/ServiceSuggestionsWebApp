@@ -1,6 +1,6 @@
 <div class="page-main-header">
     <div  class="col-md-8 container content-center">
-      <div id="inputs" class="centering-div">
+      <div id="inputs" class="centering-div" *ngIf="isAddReviewButtonEnabled()">
         <h1>Add Review about {{'\"' + item.name + '\"'}}</h1>
         <form class="row form-group col-md-8">
             <label for="star-rating-div">Star rating:</label>
@@ -17,5 +17,11 @@
             </button>
         </form>
       </div>
+      <div class="centering-div" *ngIf="!isAddReviewButtonEnabled()">
+        <p>
+            You can't add a review for this service, since it has not started yet.
+        </p>
+      </div>
+
     </div>
 </div>
